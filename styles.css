@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffeaea;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poem {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  cursor: pointer;
+  align-items: flex-start;
+  text-align: left;
+}
+.line-gap {
+  margin-bottom: 1rem;
+}
+p.span {
+  display: flex;
+  align-items: flex-start;
+}
+.changing {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  opacity: 1;
+}
+
+@keyframes fadeStar {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3; /* Dim the text like a fading star */
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fading {
+  animation: fadeStar 3s ease-in-out;
+}
