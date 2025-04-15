@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: GFS Neohellenic;
+  font-family: "GFS Neohellenic", sans-serif;
   font-size: 1.2rem;
   font-weight: 600;
   color: rgb(33, 33, 33);
@@ -19,6 +19,7 @@ body {
   display: flex;
   justify-content: center;
   height: 100vh;
+  overflow-y: auto;
 }
 
 .poem {
@@ -30,32 +31,22 @@ body {
   align-items: flex-start;
   text-align: left;
 }
+.combined {
+  margin-top: 0;
+  padding: 0;
+}
 .line-gap {
   margin-bottom: 1rem;
 }
-p.span {
-  display: flex;
-  align-items: flex-start;
-}
+
 .changing {
-  cursor: pointer;
   display: inline-block;
-  position: relative;
+  transition: opacity 1s ease-in-out;
   opacity: 1;
 }
 
-@keyframes fadeStar {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3; /* Dim the text like a fading star */
-  }
-  100% {
-    opacity: 1;
-  }
+.fade {
+  opacity: 0.3;
 }
 
-.fading {
-  animation: fadeStar 3s ease-in-out;
-}
+
