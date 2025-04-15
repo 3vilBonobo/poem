@@ -30,6 +30,9 @@ body {
   cursor: pointer;
   align-items: flex-start;
   text-align: left;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 .combined {
   margin-top: 0;
