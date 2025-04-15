@@ -5,17 +5,24 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: GFS Neohellenic;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgb(33, 33, 33);
+  background-image: url(./light-book.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   background-color: #ffeaea;
   text-align: center;
   padding: 20px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  height: 100vh;
 }
 
 .poem {
-  margin-top: 3rem;
+  margin-top: 1.2rem;
   display: flex;
   flex-direction: column;
   line-height: 1;
