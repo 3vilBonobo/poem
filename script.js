@@ -1,44 +1,80 @@
 let isPaused = false;
 
-function switchWord(element) {
-  if (isPaused) return; // Stop word change if paused
+function switchWord(span) {
+  const options = span.dataset.options.split(", ");
+  const currentIndex = options.indexOf(span.textContent.trim());
+  const nextIndex = (currentIndex + 1) % options.length;
 
-  const options = element.dataset.options.split(", ");
-  let currentIndex = options.indexOf(element.textContent);
-  let nextIndex = (currentIndex + 1) % options.length;
-
-  element.classList.add("fading"); // Start the fade effect
+  span.classList.add("fade");
 
   setTimeout(() => {
-    element.textContent = options[nextIndex]; // Change word at the peak of the fade
-  }, 1500); // Change happens halfway through the fade-out
+    span.textContent = options[nextIndex];
+  }, 500);
 
   setTimeout(() => {
-    element.classList.remove("fading"); // Remove animation after full cycle
-  }, 3000);
+    span.classList.remove("fade");
+  }, 1000);
 }
 
-const changingWords = document.querySelectorAll(".changing");
+function switchCombinedWords(container) {
+  const options = container.dataset.combinedOptions.split(", ");
+  const currentIndex = parseInt(container.dataset.currentIndex || 0);
+  const nextIndex = (currentIndex + 1) % options.length;
+  const parts = options[nextIndex].split("|").map((p) => p.trim());
+  const spans = container.querySelectorAll(".changing");
 
-// Start everything exactly 1 second after page load
-setTimeout(() => {
-  changingWords.forEach((element) => {
-    switchWord(element); // First switch happens immediately after 1 sec
+  spans.forEach((span) => {
+    const index = parseInt(span.dataset.index);
+    span.classList.add("fade");
 
-    let interval = setInterval(
-      () => switchWord(element),
-      Math.random() * 5000 + 8000 // Random interval between 8-13 sec
-    );
+    setTimeout(() => {
+      span.textContent = parts[index];
+    }, 500);
 
-    element.dataset.intervalId = interval;
+    setTimeout(() => {
+      span.classList.remove("fade");
+    }, 1000);
   });
-}, 1000); // Initial delay of exactly 1 second
 
-// Pause animation on hover
-document.querySelector(".poem").addEventListener("mouseenter", () => {
-  isPaused = true;
-});
+  container.dataset.currentIndex = nextIndex;
+}
 
-document.querySelector(".poem").addEventListener("mouseleave", () => {
-  isPaused = false;
-});
+function startWordSwitching() {
+  // Individual changing words
+  document.querySelectorAll(".changing[data-options]").forEach((span, i) => {
+    const initialDelay = 1000 + i * 800; // 1s + 0.8s * index
+
+    setTimeout(() => {
+      switchWord(span);
+
+      setInterval(() => {
+        if (!isPaused) switchWord(span);
+      }, 5000 + Math.random() * 5000); // 5–10 sec range
+    }, initialDelay);
+  });
+
+  // Combined groups with added delay between them
+  document
+    .querySelectorAll(".combined[data-combined-options]")
+    .forEach((container, i) => {
+      const initialDelay = 1000 + 2500 * i; // stagger more slowly with bigger delay
+
+      setTimeout(() => {
+        switchCombinedWords(container);
+
+        // Larger gap between group transitions
+        setInterval(() => {
+          if (!isPaused) switchCombinedWords(container);
+        }, 8000 + Math.random() * 4000); // 8–12 sec range between group switches
+      }, initialDelay);
+    });
+}
+
+// Pause on hover/touch
+const poem = document.querySelector(".poem");
+poem.addEventListener("mouseenter", () => (isPaused = true));
+poem.addEventListener("mouseleave", () => (isPaused = false));
+poem.addEventListener("touchstart", () => (isPaused = true));
+poem.addEventListener("touchend", () => (isPaused = false));
+
+window.addEventListener("DOMContentLoaded", startWordSwitching);
