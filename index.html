@@ -2,68 +2,34 @@
 <html lang="el">
 
 <head>
-    <!-- Character Encoding -->
     <meta charset="UTF-8">
-
-    <!-- Viewport for Responsive Design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- SEO Metadata -->
     <title>Μαντλέν - Ποίημα</title>
     <meta name="description" content="Το ποίημα 'Μαντλέν' με διαδραστική εναλλαγή λέξεων που αλλάζουν δυναμικά.">
-    <meta name="keywords" content="ποίηση, ελληνική ποίηση, Μαντλέν, διαδραστικό ποίημα, λέξεις που αλλάζουν">
     <meta name="author" content="Βασιλεία Οικονόμου">
 
-    <!-- Open Graph (for social media sharing) -->
-    <meta property="og:title" content="Μαντλέν - Ποίημα">
-    <meta property="og:description" content="Το ποίημα 'Μαντλέν' με διαδραστική εναλλαγή λέξεων που αλλάζουν δυναμικά.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="URL-της-εικόνας-αν-υπάρχει">
-    <meta property="og:url" content="URL-της-σελίδας">
-
-    <!-- Twitter Card (for better Twitter sharing) -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Μαντλέν - Ποίημα">
-    <meta name="twitter:description"
-        content="Το ποίημα 'Μαντλέν' με διαδραστική εναλλαγή λέξεων που αλλάζουν δυναμικά.">
-    <meta name="twitter:image" content="URL-της-εικόνας-αν-υπάρχει">
-
-    <!-- Structured Data for Search Engines (JSON-LD Schema Markup) -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "CreativeWork",
-            "name": "Μαντλέν - Ποίημα",
-            "author": {
-                "@type": "Person",
-                "name": "Βασιλεια Οικονομου"
-            },
-            "description": "Το ποίημα 'Μαντλέν' με διαδραστική εναλλαγή λέξεων που αλλάζουν δυναμικά.",
-            "inLanguage": "el"
-        }
-        </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Μαντλέν</title>
-    <link href='https://fonts.googleapis.com/css?family=GFS Neohellenic' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=GFS+Neohellenic" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
 
 <body>
-
     <div class="poem">
         <p>Μαντλέν</p>
-        <p class="line-gap">χθες το βράδυ με πήρε ο ύπνος <br>
+
+        <p class="line-gap">
+            χθες το βράδυ με πήρε ο ύπνος <br>
             <span class="changing" data-options="κλαίγοντας, αναπολώντας, στην καρέκλα">κλαίγοντας</span><br>
             κοιτώντας <br>
-            <span class="changing" data-options="ξανά,">ξανά</span><br>
+            <span class="changing" data-options="ξανά">ξανά</span><br>
             τις φωτογραφίες μας
         </p>
 
-        <p class="line-gap"><span class="changing" data-options="Νομίζω πως, Σίγουρα">Νομίζω πως</span> <br>
+        <p class="line-gap">
+            <span class="changing" data-options="Νομίζω πως, Σίγουρα">Νομίζω πως</span><br>
             <span class="changing" data-options="ονειρεύομαι, πονάω, νοσταλγώ">ονειρεύομαι</span><br>
             Είμαι <br>
-            <span class="changing" data-options="ακόμα, πολύ">ακόμα</span> <br>
+            <span class="changing" data-options="ακόμα, πολύ">ακόμα</span><br>
             θυμωμένη
         </p>
 
@@ -92,14 +58,14 @@
 
         <p><span class="changing" data-options="που μου μοιάζει, που είναι εγώ">που μου μοιάζει</span></p>
 
-        <p class="line-gap"><span class="changing" data-options="που δεν σε αφήνει, που δεν με αφήνει">που δεν σε
-                αφήνει</span></p>
+        <!-- Combined section -->
+        <div class="poem combined" data-combined-options="που δεν σε αφήνει|Να ξεχάσεις, που δεν με αφήνει|Να ξεχάσω">
+            <p class="line-gap"><span class="changing" data-index="0">που δεν σε αφήνει</span></p>
+            <p><span class="changing" data-index="1">Να ξεχάσεις</span></p>
+        </div>
 
-        <p>Να ξεχάσω</p>
+
     </div>
-
-
-
 </body>
 
 </html>
