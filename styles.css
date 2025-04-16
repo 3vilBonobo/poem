@@ -14,12 +14,51 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-color: #ffeaea;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   padding: 20px;
   display: flex;
   justify-content: center;
   height: 100vh;
   overflow-y: auto;
+}
+
+#loader {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: #111;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 3s ease;
+  z-index: 1000;
+}
+
+.loader-text {
+  opacity: 0;
+  animation: fadeText 4s ease-in-out 1s forwards;
+  text-align: center;
+}
+
+@keyframes fadeText {
+  0% {
+    opacity: 0;
+  }
+  33% {
+    opacity: 1;
+  }
+  66% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .poem {
@@ -33,6 +72,7 @@ body {
   user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  cursor: default;
 }
 .combined {
   margin-top: 0;
@@ -52,4 +92,22 @@ body {
   opacity: 0.3;
 }
 
+.site-footer {
+  color: rgb(83, 83, 83);
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  position: relative;
+  margin-top: 3rem;
+  bottom: 0;
+  width: 100%;
+}
 
+.site-footer a {
+  color: #435a6c;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: #394f61;
+}
