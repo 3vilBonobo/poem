@@ -1,3 +1,19 @@
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  const mainContent = document.getElementById("main-content");
+
+  // At 5 seconds, fade out the loader
+  setTimeout(() => {
+    loader.style.opacity = "0";
+  }, 5000);
+
+  // At 6 seconds, remove loader and show main content
+  setTimeout(() => {
+    loader.style.display = "none";
+    mainContent.style.display = "block";
+  }, 6000);
+});
+
 let isPaused = false;
 
 function switchWord(span) {
@@ -78,3 +94,5 @@ poem.addEventListener("touchstart", () => (isPaused = true));
 poem.addEventListener("touchend", () => (isPaused = false));
 
 window.addEventListener("DOMContentLoaded", startWordSwitching);
+
+document.getElementById("year").textContent = new Date().getFullYear();
