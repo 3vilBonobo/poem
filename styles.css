@@ -112,4 +112,5 @@ body {
 
 .site-footer a:hover {
   color: #394f61;
+  cursor: pointer;
 }
